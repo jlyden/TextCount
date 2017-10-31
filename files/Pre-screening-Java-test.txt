@@ -1,0 +1,46 @@
+Pre-Screening Java Developer test
+---------------------------------
+This test is meant as a pre-screening for Java developers. It can be initiated by any recruiter,
+manager, director or really anyone looking to pre-screen a Java developer. It is to be emailed
+to the applicant, with a 60 minute maximum time limit.
+
+
+Instructions for recruiter / manager / director
+-----------------------------------------------
+Regardless of how much progress has been made within the 60 minutes, the applicant is to email
+the file(s) they created by replying to the email sent to them. If a response is not received
+from the applicant within the 60 minute limit, they will not be considered further.
+
+After receiving a response from the applicant, forward the file(s) to an engineer for review
+and analysis.
+
+
+Instructions to be emailed to applicant
+---------------------------------------
+Complete the work described below. There is a 60 minute time limit, even if you have not
+finished all of the work. Reply to this email, attaching any Java file(s) you have created.
+
+1. Create a standalone Java class called TextCount.
+
+2. The class file should be executable from command line and must support the following command-line options:
+    - (required) the filename of a text file to be read into the class
+    - (optional) string to search for within the file
+
+3. Read the entire file and display the following statistics:
+    - total number of lines
+    - total number of words
+
+4. If a search string was specified on the command-line, display the following:
+    - total number of lines containing the search string
+    - total number of instances of the search string within the file
+
+5. Items to consider for error-handling:
+    - missing command-line options
+    - unknown command-line options
+    - unable to find the file specified
+
+6. Bonus Points
+    - display average number of words per line
+    - add command-line option for indicating the search string should be considered case-insensitive
+    - allow the command-line options to appear in any order on the command-line
+

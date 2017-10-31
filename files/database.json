@@ -1,0 +1,28 @@
+{
+  "dev": {
+    "driver": "mysql",
+    "user": "dev",
+    "password": "test",
+    "host" : "localhost",
+    "database": "unifiedschema",  
+    "multipleStatements": true
+  },
+
+  "test": {
+    "driver": "mysql",
+    "user": "dev",
+    "password": "test",
+    "host" : "localhost",
+    "database": "unifiedschema",  
+    "multipleStatements": true
+  },
+
+  "prod": {
+    "driver": "mysql",
+    "host": "localhost",
+    "database": "cp_navigation_prod",
+    "user": {"ENV": "PRODUCTION_USERNAME"},
+    "password": {"ENV": "PRODUCTION_PASSWORD"},
+    "multipleStatements": true
+  }
+}
