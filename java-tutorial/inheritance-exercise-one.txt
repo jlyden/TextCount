@@ -1,0 +1,54 @@
+http://pages.cs.wisc.edu/~hasti/cs368/JavaTutorial/NOTES/Inheritance-intro.html
+
+Assume the following class has been defined:
+
+class Point {
+    protected int x, y;
+    
+    // no-arg constructor
+    public Point() {
+        x = y = 0;
+    }
+    
+    // constructor with 2 args
+    public Point(int a, int b) {
+        x = a;
+		y = b;
+    }
+}
+
+class ColorPoint extends Point {
+	protected String color;
+
+	// no-arg constructor
+	public ColorPoint() {
+		super();		//optional
+		color = "red";
+	}
+
+	// 2-arg constructor
+    public ColorPoint(int a, int b) {
+        super(a, b);
+		color = "red";
+    }
+
+	// alt 2-arg constructor
+    public ColorPoint(int a, int b) {
+        this(a, b, "red");
+    }
+
+	// 3-arg constructor
+    public ColorPoint(int a, int b, String shade) {
+        super(a, b);
+		color = shade;
+    }
+
+}
+
+Define a class ColorPoint that:
+ - is a subclass of the Point class
+ - has a (protected) field of type String called color (in addition to fields x and y)
+ - has 3 public constructors:
+ - 0 args: x and y are set to 0; color is set to "red";
+ - 2 int args: x and y are set to the given values; color is set to "red"
+ - 2 int args and 1 String arg: x, y, and color are set to the given values

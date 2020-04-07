@@ -1,0 +1,73 @@
+TEST YOURSELF #1
+Consider the following program (assume that comments are replaced with actual code that works as specified):
+
+class TestExceptions {
+
+    static void e() {
+      // might cause any of the following unchecked exceptions to be thrown:
+      // Ex1, Ex2, Ex3, Ex4
+    }
+    
+    static void d() {
+      try {
+          e();
+      } catch (Ex1 ex) {
+          System.out.println("d caught Ex1");
+      }
+    }
+    
+    static void c() {
+      try {
+          d();
+      } catch (Ex2 ex) {
+          System.out.println("c caught Ex2");
+          // now cause exception Ex1 to be thrown
+      }
+    }
+    
+    static void b() {
+      try {
+          c();
+      } catch (Ex1 ex) {
+          System.out.println("b caught Ex1");
+      } catch (Ex3 ex) {
+          System.out.println("b caught Ex3");
+      }
+    }
+    
+    static void a() {
+      try {
+          b();
+      } catch (Ex1 ex) {
+          System.out.println("a caught Ex1");
+      } catch (Ex4 ex) {
+          System.out.println("a caught Ex4");
+          // now cause exception Ex1 to be thrown
+      }
+    }
+    
+    public static void main(String[] args) {
+        a();
+    }
+}
+Assume that this program is run four times. The first time, function e throws exception Ex1, the second time, it throws exception Ex2, etc. Foe each of the four runs, say what is printed; if an uncaught exception is thrown, say what happens.
+
+Exceptions Exercise 1 Answer
+
+# main -> a -> try b -> try c -> try d -> try e
+
+First Run, Ex1:
+
+# e -> Ex1
+d caught Ex1
+
+# e -> Ex2
+c caught Ex2
+b caught Ex1
+
+# e -> Ex3
+b caught Ex3
+
+# e -> Ex4
+a caught Ex4
+halt b/c of uncaught Ex1 (b/c of transfer of control)

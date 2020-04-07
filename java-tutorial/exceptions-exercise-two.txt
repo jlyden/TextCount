@@ -1,0 +1,61 @@
+Question 1: Assume that function f might throw exceptions Ex1, Ex2, or Ex3. Complete function g, outlined below, so that:
+- If the call to f causes Ex1 to be thrown, g will catch that exception and print "Ex1 caught".
+- If the call to f causes Ex2 to be thrown, g will catch that exception, print "Ex2 caught", and then will throw an Ex1 exception.
+
+    static void g() throws Ex1 {
+        try {
+			f();
+		} catch ( Ex1 ex1 ) {
+            System.out.println("Ex1 caught");
+        } catch ( Ex2 ex1 ) {
+			System.out.println("Ex2 caught");
+			throw new Ex1();
+		}
+    }
+
+Question 2: Consider the following function.
+
+static void f(int k, int[] A, String S) {
+    int j = 1 / k;
+    int len = A.length + 1;
+    char c;
+    
+    try {
+        c = S.charAt(0);
+        if (k == 10) j = A[3];
+    } catch (ArrayIndexOutOfBoundsException ex) {
+        System.out.println("array error");
+		throw new InternalError();
+    } catch (ArithmeticException ex) {
+        System.out.println("arithmetic error");
+    } catch (NullPointerException ex) {
+        System.out.println("null ptr");
+    } finally {
+        System.out.println("in finally clause");
+    }
+    System.out.println("after try block");
+}
+
+Part A.
+Assume that variable X is an array of int that has been initialized to be of length 3. For each of the following calls to function f, say what (if anything) is printed by f, and what, if any, uncaught exceptions are thrown by f.
+
+A. f(0, X, "hi");
+	I think a div/0 error gets thrown before you even get to the try
+	nothing printed, throws ArithmeticException (outside try/catch)
+B. f(10, X, "");
+xxx	null ptr
+	in finally clause
+xxx	after try block
+	** throws StringIndexOutOfBoundsException (not formally caught by catches listed)
+C. f(10, X, "bye");
+	array error
+	in finally clause
+	** throws InternalError
+D. f(10, X, null);
+	null ptr
+	in finally clause
+	after try block
+
+Part B.
+
+Why doesn't f need to have a throws clause that lists the uncaught exceptions that it might throw?
